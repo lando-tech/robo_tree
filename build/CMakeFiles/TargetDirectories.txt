@@ -1,4 +1,0 @@
-/home/landotech/Projects/tree_view_clone/build/CMakeFiles/trev_lib.dir
-/home/landotech/Projects/tree_view_clone/build/CMakeFiles/trev.dir
-/home/landotech/Projects/tree_view_clone/build/CMakeFiles/edit_cache.dir
-/home/landotech/Projects/tree_view_clone/build/CMakeFiles/rebuild_cache.dir

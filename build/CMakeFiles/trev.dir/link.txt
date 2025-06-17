@@ -1,1 +1,0 @@
-/usr/sbin/clang -g -Xlinker --dependency-file=CMakeFiles/trev.dir/link.d CMakeFiles/trev.dir/src/main.c.o -o trev  libtrev_lib.a

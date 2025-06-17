@@ -25,6 +25,13 @@ void print_f_permissions(mode_t file_mode_t) {
   printf((file_mode_t & S_IXOTH) ? "x" : "-");
 }
 
+void print_f_owner(uid_t owner_uid) {
+  struct passwd *owner_info = getpwuid(owner_uid);
+  if (owner_info != NULL) {
+    printf("  %s  ", owner_info->pw_name);
+  }
+}
+
 void print_f_size(unsigned int f_size) {
   if (f_size == 1024) {
     f_size = 1;

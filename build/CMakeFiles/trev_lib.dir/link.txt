@@ -1,2 +1,0 @@
-/usr/sbin/llvm-ar qc libtrev_lib.a CMakeFiles/trev_lib.dir/src/string_utils.c.o CMakeFiles/trev_lib.dir/src/ls_cpy.c.o CMakeFiles/trev_lib.dir/src/main.c.o
-/usr/sbin/llvm-ranlib libtrev_lib.a
