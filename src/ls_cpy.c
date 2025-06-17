@@ -1,4 +1,6 @@
 #include "ls_cpy.h"
+#include <time.h>
+
 
 void print_f_permissions(mode_t file_mode_t) {
   /*
@@ -25,10 +27,20 @@ void print_f_permissions(mode_t file_mode_t) {
   printf((file_mode_t & S_IXOTH) ? "x" : "-");
 }
 
+void print_f_timestamp(time_t timestamp) {
+  time(&timestamp);
+  struct tm *timeinfo = localtime(&timestamp);
+  char buffer[80];
+  strftime(buffer, sizeof(buffer), "%a %d %b %Y %H:%M-%Z", timeinfo);
+  printf("  %s  ", buffer);
+}
+
 void print_f_owner(uid_t owner_uid) {
   struct passwd *owner_info = getpwuid(owner_uid);
+  struct group *grp = getgrgid(owner_uid);
   if (owner_info != NULL) {
-    printf("  %s  ", owner_info->pw_name);
+    printf("  %10s", owner_info->pw_name);
+    printf("  %10s", grp->gr_name);
   }
 }
 
@@ -65,7 +77,9 @@ int read_directory_entries(const char *dir_path) {
 
       file_permissions = file_stat.st_mode;
       print_f_permissions(file_permissions);
+      print_f_owner(file_stat.st_gid);
       print_f_size(file_stat.st_size);
+      print_f_timestamp(file_stat.st_mtime);
       printf("  %-1s", entry->d_name);
       printf("\n");
     }
